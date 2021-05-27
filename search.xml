@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Unity2</title>
+      <link href="2021/05/27/Unity2/"/>
+      <url>2021/05/27/Unity2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="添加脚本文件"><a href="#添加脚本文件" class="headerlink" title="添加脚本文件"></a>添加脚本文件</h1><p>添加脚本时，会自动创建一个 文件名.cs 文件</p><p>特点：</p><ul><li><p>类名必须与文件名相同</p></li><li><p>必须继承于 MonoBehaviour（所有 Unity 脚本都继承于这个类）</p><p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2021/05/27/unMRvHD1yktwdjG.png" alt="image-20210527132451962"></p></li><li><p>默认定义了一些事件函数，如：Start()，Update()，会被 Unity 引擎启动</p><p>Start()：每次开始时会调用一次</p><p>Update()：每帧调用、更新游戏显示</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习记录 </category>
+          
+          <category> unity </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C# </tag>
+            
+            <tag> 学习记录 </tag>
+            
+            <tag> unity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>unity</title>
       <link href="2021/05/08/unity/"/>
       <url>2021/05/08/unity/</url>
@@ -12,6 +43,8 @@
       
       
       <categories>
+          
+          <category> 学习记录 </category>
           
           <category> unity </category>
           
@@ -40,7 +73,7 @@
       
       <categories>
           
-          <category> C# </category>
+          <category> 学习记录 </category>
           
           <category> winform </category>
           
@@ -71,6 +104,8 @@
       
       <categories>
           
+          <category> 学习记录 </category>
+          
           <category> C# </category>
           
       </categories>
@@ -97,6 +132,8 @@
       
       
       <categories>
+          
+          <category> 学习记录 </category>
           
           <category> C# </category>
           
@@ -125,6 +162,8 @@
       
       <categories>
           
+          <category> 学习记录 </category>
+          
           <category> C# </category>
           
       </categories>
@@ -152,6 +191,8 @@
       
       <categories>
           
+          <category> 学习记录 </category>
+          
           <category> C# </category>
           
       </categories>
@@ -162,31 +203,6 @@
             <tag> C# </tag>
             
             <tag> 学习记录 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello</title>
-      <link href="2021/04/07/hello%20C%20sharp/"/>
-      <url>2021/04/07/hello%20C%20sharp/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Hello-C"><a href="#Hello-C" class="headerlink" title="Hello C#"></a>Hello C#</h1><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">myApp</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Hello World! Hello C#&quot;</span>);</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;当前时间为：&quot;</span>+ DateTime.Now);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> C# </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> C# </tag>
             
         </tags>
       
