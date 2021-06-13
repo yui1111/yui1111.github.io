@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Unity3</title>
+      <link href="2021/06/13/Unity3/"/>
+      <url>2021/06/13/Unity3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="碰撞检测"><a href="#碰撞检测" class="headerlink" title="碰撞检测"></a>碰撞检测</h1><p>首先给每个物体都添加<code>Collider</code>类的组件</p><p>碰撞检测有两种方法</p><ul><li>对象名字（Name）</li><li>对象的标签（Tag）</li></ul><p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2021/06/13/lwHLZGN9kKI5xsc.png" alt="image-20210613084644738"></p><p>碰撞检测有多种</p><ol><li><code>OnCollisionEnter</code>：当次碰撞器/刚体开始接触另一个刚体/碰撞器时调用</li><li><code>OnCollisionExit</code>：当次刚体/碰撞器停止接触另一刚体/碰撞器时调用</li><li><code>OnCollisionStay</code>：当次碰撞器/刚体开始接触到另一个刚体/碰撞器时这个方法将在<strong>每一帧调用一次</strong></li></ol><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnCollisionEnter</span>(<span class="params">Collision collision</span>) <span class="comment">//Collison代表碰撞的对象</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//销毁游戏对象名字为 left cube 的物体</span></span><br><span class="line">    <span class="keyword">if</span>(collision.gameobject.name == <span class="string">&quot;left cube&quot;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        destroy(collision.gameobject);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="keyword">if</span> (collision.gameobject.tag == <span class="string">&quot;cube&quot;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        destroy(collision.gameobject);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="触发检测"><a href="#触发检测" class="headerlink" title="触发检测"></a>触发检测</h1><p>与碰撞检测相类似，但需要在<code>Collision</code>组件中勾选上<code>Is Trigger</code></p><p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2021/06/13/5lZCzRiG38PvhkS.png" alt="image-20210613091645092"></p><p>注意：勾选上后将无法进行碰撞</p><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (other.gameObject.tag == <span class="string">&quot;ColorChange&quot;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Destroy(other.gameObject);</span><br><span class="line">    &#125;      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习记录 </category>
+          
+          <category> C# </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C# </tag>
+            
+            <tag> 学习记录 </tag>
+            
+            <tag> unity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Unity2</title>
       <link href="2021/05/27/Unity2/"/>
       <url>2021/05/27/Unity2/</url>
