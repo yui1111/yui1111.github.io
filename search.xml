@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>计算机网络学习笔记1</title>
+      <link href="2021/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/"/>
+      <url>2021/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/</url>
+      
+        <content type="html"><![CDATA[<p>注：课程来自<a href="https://www.bilibili.com/video/BV1JV411t7ow">中科大郑烇、杨坚全套《计算机网络（自顶向下方法 第7版，James F.Kurose，Keith W.Ross）》课程</a></p><h1 id="1、计算机网络概念"><a href="#1、计算机网络概念" class="headerlink" title="1、计算机网络概念"></a>1、计算机网络概念</h1><h2 id="1-1-什么是Internet"><a href="#1-1-什么是Internet" class="headerlink" title="1.1 什么是Internet"></a>1.1 什么是Internet</h2><h3 id="什么是-Internet-：从具体构成角度"><a href="#什么是-Internet-：从具体构成角度" class="headerlink" title="什么是 Internet ：从具体构成角度"></a>什么是 Internet ：从具体构成角度</h3><blockquote><ol><li><strong>零件的角度</strong></li></ol><ul><li>节点<ul><li>主机及其上运行的应用程序</li><li>路由器、交换机等网络交换设备</li></ul></li><li>边：通信链路<ul><li>接入网链路：主机连接到互联网的链路</li><li>主干链路：路由器间的链路</li></ul></li><li>协议</li></ul><ol start="2"><li><strong>网络互联设备的角度</strong></li></ol><ul><li>数以亿计的、互联的计 算设备:<ul><li>主机 = 端系统</li><li>运行网络应用程序</li></ul></li><li>通信链路<ul><li>光纤、同轴电缆、无线电 、卫星</li><li>传输速率 = 带宽（bps）</li></ul></li><li>分组交换设备：转发分 组 (packets)<ul><li>路由器和交换机</li></ul></li></ul></blockquote><blockquote><p>协议控制发送、接收消息：如 TCP、IP、HTTP、FTP、 PPP</p><p>Internet：“网络的网络”</p><ul><li>公共Internet vs. 专用 intranet</li><li>松散的层次结构，互连的 ISP</li></ul><p>Internet标准</p><ul><li>RFC: Request for comments</li><li>IETF: Internet Engineering Task Force</li></ul></blockquote><h4 id="协议"><a href="#协议" class="headerlink" title="协议"></a><strong>协议</strong></h4><p>定义了在两个或多个通信实体（对等层的实体）之间交换的报文格式和次序，<br>以及在报文传输和/或接收或 其他事件方面所采取的动作</p><p><img src= "/img/loading.gif" data-lazy-src="https://i.loli.net/2021/11/20/pFCwxJE8W1OYe4Q.png" alt="image-20211120232826174"></p><h4 id="什么是Internet：从服务角度"><a href="#什么是Internet：从服务角度" class="headerlink" title="什么是Internet：从服务角度"></a><strong>什么是Internet：从服务角度</strong></h4><p>进行通信的分布式应用的角度</p><blockquote><ul><li>使用通信设施进行通信的分 布式应用</li><li>Web、VoIP、email、分布式 游戏、电子商务、社交网络 ……</li><li>通信基础设施为apps提供编 程接口（通信服务）</li><li>将发送和接收数据的apps与 互联网连接起来</li><li>为app应用提供服务选择，类 似于邮政服务：<ul><li>无连接不可靠服务</li><li>面向连接的可靠服务</li></ul></li></ul></blockquote><h2 id="1-2-网络边缘"><a href="#1-2-网络边缘" class="headerlink" title="1.2 网络边缘"></a><strong>1.2 网络边缘</strong></h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>C++ 多线程笔记4</title>
       <link href="2021/11/19/C++%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B04/"/>
       <url>2021/11/19/C++%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B04/</url>
