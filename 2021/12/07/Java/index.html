@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Java | yui1111</title><meta name="keywords" content="Java"><meta name="author" content="yui1111"><meta name="copyright" content="yui1111"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="代码块创建一个对象时，在一个类的调用顺序时：  调用静态代码块和静态属性初始化（注意：静态代码块和静态属性初始化调用的优先级一样，如果有多个静态代码块和多个静态变量初始化，则按他们定义的顺序调用） 调用普通代码块和普通属性的初始化 调用构造方法  1234567891011121314151617181920212223242526272829public class codeBlock &amp;#12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java">
+<meta property="og:url" content="https://yui1111.github.io/2021/12/07/Java/index.html">
+<meta property="og:site_name" content="yui1111">
+<meta property="og:description" content="代码块创建一个对象时，在一个类的调用顺序时：  调用静态代码块和静态属性初始化（注意：静态代码块和静态属性初始化调用的优先级一样，如果有多个静态代码块和多个静态变量初始化，则按他们定义的顺序调用） 调用普通代码块和普通属性的初始化 调用构造方法  1234567891011121314151617181920212223242526272829public class codeBlock &amp;#12">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yui1111.github.io/img/45.png">
+<meta property="article:published_time" content="2021-12-07T13:58:20.000Z">
+<meta property="article:modified_time" content="2021-12-09T15:07:15.611Z">
+<meta property="article:author" content="yui1111">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yui1111.github.io/img/45.png"><link rel="shortcut icon" href="/img/11.png"><link rel="canonical" href="https://yui1111.github.io/2021/12/07/Java/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-12-09 23:07:15'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="/css/shubiao.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/img/12.jpg" onerror="onerror=null;src='/img/4041.jpg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home/主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags/标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories/分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link/友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-heart"></i><span> Gallery/相册</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/45.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">yui1111</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home/主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags/标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories/分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link/友链</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-heart"></i><span> Gallery/相册</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-07T13:58:20.000Z" title="发表于 2021-12-07 21:58:20">2021-12-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-12-09T15:07:15.611Z" title="更新于 2021-12-09 23:07:15">2021-12-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a><strong>代码块</strong></h2><p>创建一个对象时，在一个类的调用顺序时：</p>
+<ol>
+<li>调用静态代码块和静态属性初始化（注意：静态代码块和静态属性初始化调用的优先级一样，如果有多个静态代码块和多个静态变量初始化，则按他们<strong>定义的顺序调用</strong>）</li>
+<li>调用普通代码块和普通属性的初始化</li>
+<li>调用构造方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">codeBlock</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        A a = <span class="keyword">new</span> A(); <span class="comment">/**/</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">class A &#123;</span></span><br><span class="line"><span class="comment">    private int n2 = getN2();</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        System.out.println(&quot;A 的普通代码块&quot;);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    static &#123;</span></span><br><span class="line"><span class="comment">        System.out.println(&quot;A 静态代码块&quot;);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    private static int n1 = getN1();</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    public static int getN1() &#123;</span></span><br><span class="line"><span class="comment">        System.out.println(&quot;getN1被调用...&quot;);</span></span><br><span class="line"><span class="comment">        return 100;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    public int getN2() &#123;</span></span><br><span class="line"><span class="comment">        System.out.println(&quot;getN2被调用...&quot;);</span></span><br><span class="line"><span class="comment">        return 200;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    public A() &#123;</span></span><br><span class="line"><span class="comment">        System.out.println(&quot;A() 被调用&quot;);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>执行结果：</p>
+<p>A 静态代码块<br>getN1被调用…<br>getN2被调用…<br>A 的普通代码块<br>A() 被调用</p>
+</blockquote>
+<p>如果有继承关系，执行的顺序为：父类静态属性 –&gt; 子类静态属性 –&gt; 父类普通属性 –&gt; 子类普通属性 –&gt; 父类构造器 –&gt; 子类构造器</p>
+<p><strong>静态代码块只能调用静态成员，普通代码块可以使用任意成员</strong></p>
+<p><code>final</code> <code>static</code>一起使用不会进行类加载(代码块也不会调用)：<code>public final statuc int num = 1000;</code></p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a><strong>接口</strong></h2><p>接口就是给出一些没有实现的方法，封装到一起没到某个类要使用的时候，再根据具体情况把这些方法写出来。如果一个类实现(implements)接口，则需要将该接口的所有抽象方法都实现。</p>
+<p>在 jdk8 后，可以有默认实现方法，需要使用<code>default</code>关键字修饰，也可以有静态方法</p>
+<p>接口中的所有方法是 <code>public</code> 方法，接口中抽象方法，可以不用 <code>abstract</code>修饰</p>
+<p>抽象类去实现接口时，可以不是实现接口的抽象方法</p>
+<p>接口中的属性，只能是<code>final</code>而且是<code>public static final</code>修饰符。比如：<code>int a = 1</code>，实际上是<code>public static final int a = 1</code>。</p>
+<p><strong>小结</strong></p>
+<blockquote>
+<p>当子类继承了父类，就自动拥有父类的功能，如果子类需要扩展功能可以通过实现接口的方式扩展，可以理解实现接口时对Java但继承机制的一种补充。</p>
+<p>继承的价值主要在于：解决代码的<strong>复用性和可维护性</strong></p>
+<p>接口的价值主要在于：设计，设计好各种规范(方法)，让其它类去实现这些方法，让其更加灵活</p>
+</blockquote>
+<h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a><strong>内部类</strong></h2><p>一个类的内部有完整的嵌套了另一个类结构，被嵌套的类就称为内部类(inner class)，嵌套其他类的类称为外部类(outer class)</p>
+<h3 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a><strong>局部内部类</strong></h3><p>局部内部类是定义在外部类的局部位置，通常在方法中。局部内部类<strong>可以直接访问外部类的所有成员</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> n1 = <span class="number">100</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span> </span>&#123;&#125;    <span class="comment">//  私有方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;   <span class="comment">//  局部内部类</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">f1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;n1 = &quot;</span> + n1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>局部内部类不能添加访问修饰符，但是可以用<code>final</code>修饰，作用域：仅仅在定义它的方法或代码块中。</p>
+<p>如果外部类和局部内部类的成员重名时，默认遵循就近原则，如果想访问外部类的成员，需要使用外部类名.this.成员去访问</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Outer outer = <span class="keyword">new</span> Outer();</span><br><span class="line">        outer.m1();	<span class="comment">//	InnerClass n1 = 800</span></span><br><span class="line">        			<span class="comment">//	OuterClass n1 = 100</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> n1 = <span class="number">100</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span> </span>&#123;&#125;    <span class="comment">//  私有方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> </span>&#123;   <span class="comment">//  局部内部类</span></span><br><span class="line">            <span class="keyword">private</span> <span class="keyword">int</span> n1 = <span class="number">800</span>;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">f1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;InnerClass n1 = &quot;</span> + n1);</span><br><span class="line">                System.out.println(<span class="string">&quot;OuterClass n1 = &quot;</span> + Outer.<span class="keyword">this</span>.n1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Inner inner = <span class="keyword">new</span> Inner();</span><br><span class="line">        inner.f1();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a><strong>匿名内部类</strong></h3><p>匿名内部类是定义在外部类的局部位置，它本质还是一个类，但该类没有名字，而且它同时还是一个对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outer04</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> n1 = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//  基于接口的匿名内部类</span></span><br><span class="line">        IA tiger = <span class="keyword">new</span> IA() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cry</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;老虎呼唤...&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;特有的方法&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        tiger.cry();</span><br><span class="line">        System.out.println(tiger.getClass());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IA</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cry</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>tiger</code>的编译类型为 <code>IA</code>运行类型就是匿名内部类。</p>
+<p>原理：jdk 底层会分配类名<code>Outer04$1</code>，在创建内部类 <code>Outer04$1</code>后立刻就创建了<code>Outer04$1</code>实例，并把地址返回给 <code>tiger</code>。</p>
+<h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a><strong>成员内部类</strong></h3><p>其他类中创建成员内部类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outer01</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> n1 = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner01</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;hi...&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClassExercise02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 第一种</span></span><br><span class="line">        Outer01 outer01 = <span class="keyword">new</span> Outer01();</span><br><span class="line">        Outer01.Inner01 inner01 = outer01.<span class="function">new <span class="title">Inner01</span><span class="params">()</span></span>;</span><br><span class="line">        inner01.hi();</span><br><span class="line">        <span class="comment">// 第二种</span></span><br><span class="line">        Outer01.Inner01 inner011 = <span class="keyword">new</span> Outer01().<span class="function">new <span class="title">Inner01</span><span class="params">()</span></span>;</span><br><span class="line">        inner011.hi();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h2><p><strong>常用方法</strong></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://s2.loli.net/2021/12/08/tk917b6lF8vpx3Z.png" alt="image-20211208213101914"></p>
+<h2 id="异常类"><a href="#异常类" class="headerlink" title="异常类"></a><strong>异常类</strong></h2><h3 id="异常体系图"><a href="#异常体系图" class="headerlink" title="异常体系图"></a><strong>异常体系图</strong></h3><p><img src= "/img/loading.gif" data-lazy-src="https://s2.loli.net/2021/12/09/B27P9eELCKYozID.png" alt="image-20211209132502605"></p>
+<h3 id="try-catch-finally"><a href="#try-catch-finally" class="headerlink" title="try-catch-finally"></a>try-catch-finally</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 可能有异常，一旦有异常直接进入 catch 中 </span></span><br><span class="line">&#125;<span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">    <span class="comment">// 捕获到异常</span></span><br><span class="line">    <span class="comment">// 当异常发生时系统将异常封装成 Exception 对象 e，传递给 catch</span></span><br><span class="line">    <span class="comment">// 得到异常对象后，程序员自己处理</span></span><br><span class="line">    <span class="comment">// 注意：如果没有发生异常，catch 代码块将不会执行</span></span><br><span class="line">&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 不管 try 代发快是否发生异常，始终要执行 finally，所以，通常将释放资源的代码 放在 finally</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="自定义异常类"><a href="#自定义异常类" class="headerlink" title="自定义异常类"></a><strong>自定义异常类</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Custom</span> <span class="keyword">extends</span> <span class="title">RuntimeException</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Custom</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="throw-和-throws-的区别"><a href="#throw-和-throws-的区别" class="headerlink" title="throw 和 throws 的区别"></a>throw 和 throws 的区别</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>意义</th>
+<th>位置</th>
+<th>后面跟的东西</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>throws</td>
+<td>异常处理的一种方式</td>
+<td>方法声明处</td>
+<td>异常类型</td>
+</tr>
+<tr>
+<td>throw</td>
+<td>手动生成异常对象的关键字</td>
+<td>方法体中</td>
+<td>异常对象</td>
+</tr>
+</tbody></table>
+<h2 id="String-类"><a href="#String-类" class="headerlink" title="String 类"></a>String 类</h2><p><strong>继承图</strong></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://s2.loli.net/2021/12/09/RGmhQfwuzWpVx2L.png" alt="image-20211209213739028"></p>
+<p><strong>String 类实现了接口 Serializable 【String 可以串行化(序列化)：可以在网络传输)</strong></p>
+<p><strong>String 类实现了接口 Comparable 【String 对象可以比较大小】</strong></p>
+<p><strong>String 是 final 类，不能被继承</strong></p>
+<p>**String 有属性 <code>private final char value[];</code>用于存放字符串内容，不可修改(对象不能修改)**，<u><strong>即<code>value</code>不能指向新的地址，但是单个字符的内容是可以改变的</strong></u></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="keyword">char</span>[] value = &#123;<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>&#125;;</span><br><span class="line">value[<span class="number">0</span>] = <span class="string">&#x27;b&#x27;</span>; 	<span class="comment">// 可行</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span>[] s = &#123;<span class="string">&#x27;q&#x27;</span>, <span class="string">&#x27;q&#x27;</span>, <span class="string">&#x27;q&#x27;</span>&#125;;</span><br><span class="line">value = s; 	<span class="comment">// error</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="两种创建String对象的区别"><a href="#两种创建String对象的区别" class="headerlink" title="两种创建String对象的区别"></a>两种创建String对象的区别</h3><p><strong>方式一</strong>：直接赋值 <code>String s = &quot;hso&quot;;</code></p>
+<p><strong>方式二</strong>：调用构造器 <code>String s2 = new String(&quot;hso&quot;);</code></p>
+<blockquote>
+<p>方式一：<strong>先从常量池查看是否有<code>&quot;hso&quot;</code>数据空间</strong>，如果有，直接指向；如果没有则重新创建，然后指向。s <u><strong>最终指向的是常量池的空间地址</strong></u></p>
+<p>方式二：<strong>先从堆中创建空间，里面维护了<code>value</code>属性，指向常量池的<code>&quot;hso&quot;</code>空间</strong>。如果常量池没有<code>&quot;hso&quot;</code>，则重新创建，如果有，直接通过<code>value</code>指向，**<u>最终指向的是堆中的空间地址</u>**</p>
+</blockquote>
+<p><img src= "/img/loading.gif" data-lazy-src="https://s2.loli.net/2021/12/09/YWu561QA2tXrOfq.png" alt="image-20211209221436474"></p>
+<h3 id="intern"><a href="#intern" class="headerlink" title="intern()"></a>intern()</h3><p><code>intern()</code> 方法最终返回的是常量池的地址</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String a = <span class="string">&quot;hso&quot;</span>;</span><br><span class="line">String b = <span class="keyword">new</span> String(<span class="string">&quot;hso&quot;</span>);</span><br><span class="line">System.out.println(a == b); <span class="comment">// false</span></span><br><span class="line">System.out.println(a == b.intern()); <span class="comment">// true</span></span><br><span class="line">System.out.println(b == b.intern()); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a><strong>例题</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String a = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">String b = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">String c = a + b;</span><br><span class="line">String d = <span class="string">&quot;helloabc&quot;</span>;</span><br><span class="line">System.out.println(d == c.intern());	<span class="comment">// true</span></span><br><span class="line">System.out.println(d == c);	<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p><img src= "/img/loading.gif" data-lazy-src="https://s2.loli.net/2021/12/09/7xOv2MwbLF8tfzh.png" alt="image-20211209230314419"></p>
+<p><strong>重要规则</strong>： <code>String c1 = &quot;ab&quot; + &quot;cd&quot;;</code>常量相加，看的是常量池。<code>String c1 = a + b;</code>变量相加，是在堆中。</p>
+<p>底层为：<code>StringBuilder sb = new StringBuilder(); sb.append(a); sb.append(b);</code> <code>sb</code>实在堆中，并且 <code>append</code>是在原来字符串的基础上追加的。</p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Java</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://yui1111.github.io/2021/12/07/Java/">https://yui1111.github.io/2021/12/07/Java/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a" style="display: inline-block;width: 120px"><h>作者</h><div class="post-copyright-cc-info"><h>yui1111</h></div></div><div class="post-copyright-c" style="display: inline-block;width: 120px"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-12-07</h></div></div><div class="post-copyright-u" style="display: inline-block;width: 120px"><h>更新于</h><div class="post-copyright-cc-info"><h>2021-12-09</h></div></div><div class="post-copyright-c" style="display: inline-block;width: 120px"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY 4.0" href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC BY 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a></div><div class="post_share"><div class="social-share" data-image="/img/45.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/09/Java%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/"><img class="prev-cover" data-lazy-src="/img/51.jpg" onerror="onerror=null;src='/img/4041.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java面试题</div></div></a></div><div class="next-post pull-right"><a href="/2021/11/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/"><img class="next-cover" data-lazy-src="/img/50.jpg" onerror="onerror=null;src='/img/4041.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机网络学习笔记2</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/12/09/Java经典面试题/" title="Java面试题"><img class="cover" data-lazy-src="/img/51.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-09</div><div class="title">Java面试题</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/12.jpg" onerror="this.onerror=null;this.src='/img/4041.jpg'" alt="avatar"/><div class="author-info__name">yui1111</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yui1111"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yui1111" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/88488687" target="_blank" title="Bilibili"><i class="fas fa-link"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content"></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">1.</span> <span class="toc-text">代码块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.</span> <span class="toc-text">接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">内部类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">3.1.</span> <span class="toc-text">局部内部类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">3.2.</span> <span class="toc-text">匿名内部类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">3.3.</span> <span class="toc-text">成员内部类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#enum"><span class="toc-number">4.</span> <span class="toc-text">enum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%B1%BB"><span class="toc-number">5.</span> <span class="toc-text">异常类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB%E5%9B%BE"><span class="toc-number">5.1.</span> <span class="toc-text">异常体系图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#try-catch-finally"><span class="toc-number">5.2.</span> <span class="toc-text">try-catch-finally</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8%E7%B1%BB"><span class="toc-number">5.3.</span> <span class="toc-text">自定义异常类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#throw-%E5%92%8C-throws-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">5.4.</span> <span class="toc-text">throw 和 throws 的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-%E7%B1%BB"><span class="toc-number">6.</span> <span class="toc-text">String 类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E5%88%9B%E5%BB%BAString%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">6.1.</span> <span class="toc-text">两种创建String对象的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#intern"><span class="toc-number">6.2.</span> <span class="toc-text">intern()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">6.3.</span> <span class="toc-text">例题</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/09/Java%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Java面试题"><img data-lazy-src="/img/51.jpg" onerror="this.onerror=null;this.src='/img/4041.jpg'" alt="Java面试题"/></a><div class="content"><a class="title" href="/2021/12/09/Java%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Java面试题">Java面试题</a><time datetime="2021-12-09T13:05:47.000Z" title="发表于 2021-12-09 21:05:47">2021-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/07/Java/" title="Java"><img data-lazy-src="/img/45.png" onerror="this.onerror=null;this.src='/img/4041.jpg'" alt="Java"/></a><div class="content"><a class="title" href="/2021/12/07/Java/" title="Java">Java</a><time datetime="2021-12-07T13:58:20.000Z" title="发表于 2021-12-07 21:58:20">2021-12-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/" title="计算机网络学习笔记2"><img data-lazy-src="/img/50.jpg" onerror="this.onerror=null;this.src='/img/4041.jpg'" alt="计算机网络学习笔记2"/></a><div class="content"><a class="title" href="/2021/11/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/" title="计算机网络学习笔记2">计算机网络学习笔记2</a><time datetime="2021-11-23T08:01:10.000Z" title="发表于 2021-11-23 16:01:10">2021-11-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" title="计算机网络学习笔记1"><img data-lazy-src="/img/45.png" onerror="this.onerror=null;this.src='/img/4041.jpg'" alt="计算机网络学习笔记1"/></a><div class="content"><a class="title" href="/2021/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" title="计算机网络学习笔记1">计算机网络学习笔记1</a><time datetime="2021-11-20T15:34:59.000Z" title="发表于 2021-11-20 23:34:59">2021-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/19/C++%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B04/" title="C++ 多线程笔记4"><img data-lazy-src="/img/32.jpg" onerror="this.onerror=null;this.src='/img/4041.jpg'" alt="C++ 多线程笔记4"/></a><div class="content"><a class="title" href="/2021/11/19/C++%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AC%94%E8%AE%B04/" title="C++ 多线程笔记4">C++ 多线程笔记4</a><time datetime="2021-11-19T14:19:28.000Z" title="发表于 2021-11-19 22:19:28">2021-11-19</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/45.png')"><div id="footer-wrap"><div class="copyright">&copy;2021 By yui1111</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">welcome to yui1111's blog</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script src="/css/cute.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
